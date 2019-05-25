@@ -1,40 +1,37 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
+import { bindActionCreators } from 'redux';
+import {connect} from 'react-redux';
+import { add, subtract, reset } from '../actions';
+
 
 class Home extends React.Component {
 
-    state = {
-        counter: 0
-    }
-
-    add = () => {
-        num = this.state.counter + 1
-        this.setState({ counter: num})
-    }
-
-    
-    subtract = () => {
-        num = this.state.counter - 1
-        this.setState({ counter: num})
-    }
-
-    
-    reset = () => {
-        this.setState({ counter: 0})
-    }
-  render() {
+    render() {
     return (
       <View style={styles.container}>
-      <Text>Sumed up to: {this.state.counter}</Text>
-      <Button title="Add" onPress={()=> this.add()} />
-        <Button title="Subtract" onPress={()=> this.subtract()} />
-        <Button title="Reset" onPress={()=> this.reset()} />
+      <Text>Sumed up to: {this.props.count}</Text>
+      <Button title="Add" onPress={()=> this.props.add()} />
+        <Button title="Subtract" onPress={()=> this.props.subtract()} />
+        <Button title="Reset" onPress={()=> this.props.reset()} />
       </View>
         
         
      
     );  
   }
+}
+
+mapStateToProps = (state) => {
+
+  return {
+    count: state
+  }
+
+}
+
+mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({add, subtract, reset}, dispatch)
 }
 
 const styles = StyleSheet.create({
@@ -46,4 +43,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Home;
+export default connect(mapStateToProps, mapDispatchToProps)(Home)
