@@ -1,5 +1,5 @@
 import React from 'react';
-import TabNavigator from './screens/Tabnavigator';
+import SwitchNavigator from './navigation/SwitchNavigator';
 import reducer from './reducers';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
@@ -15,7 +15,7 @@ class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-      <TabNavigator />
+      <SwitchNavigator />
       </Provider>
     );
   }

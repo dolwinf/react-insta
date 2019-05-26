@@ -1,8 +1,10 @@
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
-import Home from './Home.js'
-import Search from './Search'
-import Profile from './Profile'
+import Home from '../screens/Home.js'
+import Search from '../screens/Search'
+import Profile from '../screens/Profile'
+import Activity from '../screens/Activity'
+import Upload from '../screens/Upload'
 import { StyleSheet } from 'react-native';
 import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 
@@ -11,7 +13,9 @@ import { createBottomTabNavigator, createAppContainer } from 'react-navigation';
 const TabNavigator = createBottomTabNavigator({
     Home: Home,
     Search: Search,
-    Profile: Profile
+    Profile: Profile,
+    Activity: Activity,
+    Upload: Upload
   });
   
   const styles = StyleSheet.create({
